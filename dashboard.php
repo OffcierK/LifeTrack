@@ -49,7 +49,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="top-actions">
                 <span>🌙</span>
                 <span>🔔</span>
-                <span>👤</span>
+                <span id="openUserPanel" style="cursor:pointer">👤</span>
             </div>
         </header>
 
@@ -83,9 +83,42 @@ if (!isset($_SESSION['user_id'])) {
             </div>
 
         </section>
+        <!-- USER PANEL -->
+        <div class="user-panel" id="userPanel">
+            <div class="user-panel-header">
+                <h3>👤 User</h3>
+                <span class="close-btn" id="closeUserPanel">✕</span>
+            </div>
+
+            <div class="user-panel-content">
+                <p><strong>Email:</strong><br>
+                    <?= htmlspecialchars($currentUser['email']) ?>
+                </p>
+
+                <p><strong>Joined:</strong><br>
+                    <?= date("d/m/Y", strtotime($currentUser['created_at'])) ?>
+                </p>
+
+                <a href="logout.php" class="logout-btn">Logout</a>
+            </div>
+        </div>
+
 
     </main>
 </div>
+<script>
+const userPanel = document.getElementById("userPanel");
+const openBtn = document.getElementById("openUserPanel");
+const closeBtn = document.getElementById("closeUserPanel");
+
+openBtn.addEventListener("click", () => {
+    userPanel.classList.add("show");
+});
+
+closeBtn.addEventListener("click", () => {
+    userPanel.classList.remove("show");
+});
+</script>
 
 </body>
 </html>
