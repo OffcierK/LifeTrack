@@ -1,6 +1,12 @@
 <?php
 require_once "auth.php";
 require_once "config/db.php"; // nhớ có DB
+$userId = $_SESSION['user_id'];
+
+$stmt = $conn->prepare("SELECT email, created_at FROM users WHERE id = ?");
+$stmt->execute([$userId]);
+$currentUser = $stmt->fetch(PDO::FETCH_ASSOC);
+
 
 $stmt = $conn->query("SELECT TOP 1 * FROM motivations ORDER BY NEWID()");
 $motivation = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -105,6 +111,46 @@ if (!isset($_SESSION['user_id'])) {
 
 
     </main>
+    <!-- USER PANEL -->
+        <div class="user-panel" id="userPanel">
+
+            <div class="user-panel-header">
+                <h3>👤 User Profile</h3>
+                <span class="close-btn" id="closeUserPanel">✕</span>
+            </div>
+
+            <div class="user-panel-content">
+
+                <div class="user-info">
+                    <p class="label">Email</p>
+                    <p class="value">
+                        <?= htmlspecialchars($currentUser['email']) ?>
+                    </p>
+                </div>
+
+                <div class="user-info">
+                    <p class="label">Joined</p>
+                    <p class="value">
+                        <?= date("d/m/Y", strtotime($currentUser['created_at'])) ?>
+                    </p>
+                </div>
+
+                <div class="user-info">
+                    <p class="label">Status</p>
+                    <p class="value status active">Active</p>
+                </div>
+
+                <hr>
+
+                <!-- Chuẩn bị sẵn cho tương lai -->
+                <button class="panel-btn disabled">🌙 Dark mode (soon)</button>
+                <button class="panel-btn disabled">🔒 Change password</button>
+
+                <a href="logout.php" class="logout-btn">Logout</a>
+
+            </div>
+    </div>
+
 </div>
 <script>
 const userPanel = document.getElementById("userPanel");
