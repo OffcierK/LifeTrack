@@ -151,13 +151,16 @@
 
 .panel-btn {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 8px;
+    padding: 12px 14px;
+    border-radius: 10px;
     border: none;
-    background: #f1f3f5;
-    color: #666;
-    cursor: not-allowed;
+    background: #f3f4f6;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.25s ease;
+    margin-bottom: 10px;
 }
 
 .logout-btn {
@@ -170,4 +173,47 @@
     border-radius: 8px;
     text-decoration: none;
     font-weight: 500;
+}
+.panel-btn:hover {
+    background: #e5e7eb;
+    transform: translateX(4px);
+}
+.panel-btn:active {
+    transform: scale(0.97);
+}
+
+.logout-btn {
+    display: block;
+    margin-top: 14px;
+    padding: 12px;
+    text-align: center;
+    border-radius: 10px;
+    background: #b91c1c;
+    color: #fee2e2;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+/* hover */
+.logout-btn:hover {
+    background: #fecaca;
+    color: #b91c1c;
+    transform: scale(1.03);
+}
+
+/* click */
+.logout-btn:active {
+    transform: scale(0.97);
+}
+#openUserPanel {
+    font-size: 20px;
+    padding: 6px;
+    border-radius: 50%;
+    transition: all 0.25s ease;
+}
+
+#openUserPanel:hover {
+    background: rgba(0,0,0,0.06);
+    transform: scale(1.15);
 }

@@ -89,26 +89,6 @@ if (!isset($_SESSION['user_id'])) {
             </div>
 
         </section>
-        <!-- USER PANEL -->
-        <div class="user-panel" id="userPanel">
-            <div class="user-panel-header">
-                <h3>👤 User</h3>
-                <span class="close-btn" id="closeUserPanel">✕</span>
-            </div>
-
-            <div class="user-panel-content">
-                <p><strong>Email:</strong><br>
-                    <?= htmlspecialchars($currentUser['email']) ?>
-                </p>
-
-                <p><strong>Joined:</strong><br>
-                    <?= date("d/m/Y", strtotime($currentUser['created_at'])) ?>
-                </p>
-
-                <a href="logout.php" class="logout-btn">Logout</a>
-            </div>
-        </div>
-
 
     </main>
     <!-- USER PANEL -->
@@ -143,7 +123,7 @@ if (!isset($_SESSION['user_id'])) {
                 <hr>
 
                 <!-- Chuẩn bị sẵn cho tương lai -->
-                <button class="panel-btn disabled">🌙 Dark mode (soon)</button>
+                <button class="panel-btn disabled">🌙 Dark mode</button>
                 <button class="panel-btn disabled">🔒 Change password</button>
 
                 <a href="logout.php" class="logout-btn">Logout</a>
