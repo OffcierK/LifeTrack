@@ -1,0 +1,86 @@
+.app {
+    display: flex;
+    height: 100vh;
+    background: #f4f6ff;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: white;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+}
+
+.sidebar-logo {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: #333;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background: #667eea;
+    color: white;
+}
+
+/* MAIN */
+.main {
+    flex: 1;
+    padding: 24px;
+}
+
+/* HEADER */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-actions span {
+    margin-left: 12px;
+    cursor: pointer;
+}
+
+/* STATS */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+}
+
+/* CARDS */
+.card {
+    background: white;
+    padding: 16px;
+    border-radius: 14px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+}
+
+.card.big {
+    grid-column: span 2;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.quote {
+    font-style: italic;
+    margin-top: 10px;
+}
