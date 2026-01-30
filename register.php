@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <p class="auth-success"><?= $success ?></p>
     <script>
         setTimeout(() => {
-            window.location.href = "index.php";
+            window.location.href = "login.php";
         }, 2000); // 2 giây
     </script>
     <?php endif; ?>

@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <?php endif; ?>
 
     <div class="auth-links">
-        <a href="index.php">← Quay lại đăng nhập</a>
+        <a href="login.php">← Quay lại đăng nhập</a>
     </div>
 </div>
 
