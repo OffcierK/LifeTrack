@@ -394,17 +394,41 @@
     transform: scale(0.97);
 }
 
-#openUserPanel {
-    font-size: 20px;
+.topbar-icon {
+    width: 40px;
+    height: 40px;
     padding: 6px;
     border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
     transition: all 0.25s ease;
+    background: transparent;
+    border: none;
 }
 
-#openUserPanel:hover {
+.topbar-icon:hover {
     background: rgba(0,0,0,0.06);
     transform: scale(1.15);
 }
+
+.icon-img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    pointer-events: none;
+}
+.top-actions {
+    display: flex;
+    align-items: center; /* 🔥 QUAN TRỌNG NHẤT */
+    gap: 12px;
+}
+#openUserPanelAvatar {
+    width: 45px;
+    height: 45px;
+}
+
 
 /* ========== SIDEBAR COLLAPSE ========== */
 
@@ -686,6 +710,9 @@ body.dark .panel-btn {
 body.dark .panel-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 30px rgba(59,130,246,0.45);
+}
+body.dark .topbar-icon:hover {
+    background: rgba(255,255,255,0.12);
 }
 
 /* Smooth theme transition */

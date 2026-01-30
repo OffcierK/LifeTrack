@@ -27,90 +27,14 @@ if (!isset($_SESSION['user_id'])) {
 </head>
 <body>
     <!-- SIDEBAR -->
-<div class="app">
+        <div class="app">
+        <?php include "partials/sidebar.php"; ?>
 
-        <aside class="sidebar">
+        <main class="main">
+            <?php include "partials/topbar.php"; ?>
 
-        <div class="sidebar-top">
-            <!-- MỚI -->
-        <div class="sidebar-logo">
-            <img src="assets/img/logo.png" alt="Logo" class="logo-icon">
-            <span class="logo-text"></span>
-            <button id="toggleSidebar" class="collapse-btn">☰</button>
-        </div>
-
-
-        <div class="sidebar-search">
-            <input type="text" placeholder="Search..." />
-        </div>
-
-        <div class="sidebar-section">
-    <p class="section-title">TASKS</p>
-    <a class="menu-item active" data-view="today" data-tooltip="Today">
-        📅 <span>Today</span>
-    </a>
-    <a class="menu-item" data-tooltip="Upcoming">
-    <img src="assets/img/deadline.png" alt="Upcoming" class="menu-icon">
-    <span>Upcoming</span>
-    <a class="menu-item" data-tooltip="Calendar">
-    <img src="assets/img/cld.png" alt="Calendar" class="menu-icon">
-    <span>Calendar</span>
-    </a>
-    <a class="menu-item" data-tooltip="Sticky Wall">
-    <img src="assets/img/pin.png" alt="Sticky Wall" class="menu-icon">
-    <span>Sticky Wall</span>
-    </a>
-</div>
-
-<div class="sidebar-section">
-    <p class="section-title">LISTS</p>
-    <a class="menu-item" data-tooltip="Personal">
-    <img src="assets/img/man.png" alt="Personal" class="menu-icon">
-    <span>Personal</span>
-    </a>
-    <a class="menu-item" data-tooltip="Work">
-    <img src="assets/img/suitcase.png" alt="Work" class="menu-icon">
-    <span>Work</span>
-    </a>
-    <a class="menu-item" data-tooltip="Study">
-    <img src="assets/img/mortarboard.png" alt="Study" class="menu-icon">
-    <span>Study</span>
-    </a>
-    <a class="menu-item add" data-tooltip="Add new list">
-        ＋ <span>Add new list</span>
-    </a>
-</div>
-
-<!-- FOOTER -->
-<div class="sidebar-footer">
-    <a class="menu-item" data-tooltip="Reports">
-    <img src="assets/img/report.png" alt="Reports" class="menu-icon">
-    <span>Reports</span>
-    </a>
-    <a class="menu-item" data-tooltip="Settings">
-    <img src="assets/img/cogwheel.png" alt="Settings" class="menu-icon">
-    <span>Settings</span>
-    </a>
-</div>
-
-</aside>
-
-
-    <!-- MAIN -->
-    <main class="main">
-
-        <!-- HEADER -->
-        <header class="topbar">
-            <h2>Good morning 👋</h2>
-            <div class="top-actions">
-                <span>🌙</span>
-                <img id="openUserPanel" src="assets/img/bell.png" alt="User" style="cursor:pointer; width: 40x; height: 40px; object-fit: contain; vertical-align: middle;">
-                <img id="openUserPanel" src="assets/img/profile.png" alt="User" style="cursor:pointer; width: 45px; height: 45px; object-fit: contain; vertical-align: middle;">
-            </div>
-        </header>
-
-        <!-- STATS -->
-        <section class="stats">
+            <!-- phần stats + content GIỮ NGUYÊN -->
+             <section class="stats">
             <div class="card">✅ Tasks<br><strong>5 / 8</strong></div>
             <div class="card">🔥 Streak<br><strong>12 days</strong></div>
             <div class="card">💸 Expense<br><strong>$120</strong></div>
@@ -149,7 +73,10 @@ if (!isset($_SESSION['user_id'])) {
 
         </section>
 
-    </main>
+        </main>
+        </div>
+
+
     <!-- USER PANEL -->
         <div class="user-panel" id="userPanel">
 
@@ -202,17 +129,27 @@ if (!isset($_SESSION['user_id'])) {
 /* =====================
    USER PANEL TOGGLE
 ===================== */
-const userPanel = document.getElementById("userPanel");
-const openBtn = document.getElementById("openUserPanel");
-const closeBtn = document.getElementById("closeUserPanel");
+document.addEventListener("DOMContentLoaded", () => {
+    const panel = document.getElementById("userPanel");
+    const bell = document.getElementById("openUserPanelBell");
+    const avatar = document.getElementById("openUserPanelAvatar");
+    const closeBtn = document.getElementById("closeUserPanel");
 
-openBtn.addEventListener("click", () => {
-    userPanel.classList.add("show");
+    if (!panel) return;
+
+    bell?.addEventListener("click", () => {
+        panel.classList.add("show");
+    });
+
+    avatar?.addEventListener("click", () => {
+        panel.classList.add("show");
+    });
+
+    closeBtn?.addEventListener("click", () => {
+        panel.classList.remove("show");
+    });
 });
 
-closeBtn.addEventListener("click", () => {
-    userPanel.classList.remove("show");
-});
 /* =====================
    DARK MODE TOGGLE
 ===================== */
@@ -220,10 +157,11 @@ closeBtn.addEventListener("click", () => {
 </script>
 <script>
 const toggleThemeBtn = document.getElementById("toggleTheme");
+const themeIcon = toggleThemeBtn.querySelector("img");
 
 if (localStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark");
-    toggleThemeBtn.innerText = "☀️ Light mode";
+    themeIcon.src = "assets/img/sun.png";
 }
 
 toggleThemeBtn.addEventListener("click", () => {
@@ -231,12 +169,13 @@ toggleThemeBtn.addEventListener("click", () => {
 
     if (document.body.classList.contains("dark")) {
         localStorage.setItem("theme", "dark");
-        toggleThemeBtn.innerText = "☀️ Light mode";
+        themeIcon.src = "assets/img/sun.png";
     } else {
         localStorage.setItem("theme", "light");
-        toggleThemeBtn.innerText = "🌙 Dark mode";
+        themeIcon.src = "assets/img/night-mode.png";
     }
 });
+
 </script>
 
 <script src="assets/js/dashboard.js"></script>
