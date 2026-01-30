@@ -418,6 +418,13 @@
     transition: all 0.25s ease;
     color: #667eea;
     margin-left: auto;
+    margin-right: 20px; /* Thêm dòng này */
+}
+
+.app.collapsed .collapse-btn {
+    margin-left: 0;
+    margin-top: 4px;
+    margin-right: 0; /* Thêm dòng này để reset khi collapsed */
 }
 
 .collapse-btn:hover {
