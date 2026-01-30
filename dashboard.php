@@ -26,25 +26,68 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
 <body>
-
+    <!-- SIDEBAR -->
 <div class="app">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+        <aside class="sidebar">
+
+        <div class="sidebar-top">
+            <!-- MỚI -->
         <div class="sidebar-logo">
-            📊 <span>LifeTrack</span>
+            <img src="assets/img/logo.png" alt="Logo" class="logo-icon">
+            <span class="logo-text"></span>
+            <button id="toggleSidebar" class="collapse-btn">☰</button>
         </div>
 
-        <nav class="sidebar-menu">
-            <a class="active">🏠 Dashboard</a>
-            <a>✅ Todo</a>
-            <a>💸 Expenses</a>
-            <a>🎯 Goals</a>
-            <a>🔥 Motivation</a>
-            <a>📈 Reports</a>
-            <a>⚙️ Settings</a>
-        </nav>
-    </aside>
+
+        <div class="sidebar-search">
+            <input type="text" placeholder="Search..." />
+        </div>
+
+        <div class="sidebar-section">
+    <p class="section-title">TASKS</p>
+    <a class="menu-item active" data-view="today" data-tooltip="Today">
+        📅 <span>Today</span>
+    </a>
+    <a class="menu-item" data-tooltip="Upcoming">
+        ⏳ <span>Upcoming</span>
+    </a>
+    <a class="menu-item" data-tooltip="Calendar">
+        🗓 <span>Calendar</span>
+    </a>
+    <a class="menu-item" data-tooltip="Sticky Wall">
+        📌 <span>Sticky Wall</span>
+    </a>
+</div>
+
+<div class="sidebar-section">
+    <p class="section-title">LISTS</p>
+    <a class="menu-item" data-tooltip="Personal">
+        🔴 <span>Personal</span>
+    </a>
+    <a class="menu-item" data-tooltip="Work">
+        🔵 <span>Work</span>
+    </a>
+    <a class="menu-item" data-tooltip="Study">
+        🟡 <span>Study</span>
+    </a>
+    <a class="menu-item add" data-tooltip="Add new list">
+        ＋ <span>Add new list</span>
+    </a>
+</div>
+
+<!-- FOOTER -->
+<div class="sidebar-footer">
+    <a class="menu-item" data-tooltip="Reports">
+        📊 <span>Reports</span>
+    </a>
+    <a class="menu-item" data-tooltip="Settings">
+        ⚙️ <span>Settings</span>
+    </a>
+</div>
+
+</aside>
+
 
     <!-- MAIN -->
     <main class="main">
@@ -69,6 +112,15 @@ if (!isset($_SESSION['user_id'])) {
 
         <!-- CONTENT -->
         <section class="content">
+            <div class="view active" id="view-today">
+    <!-- CONTENT TODAY -->
+            <div class="card">📅 Task hôm nay</div>
+        </div>
+
+        <div class="view" id="view-upcoming">
+            <!-- CONTENT UPCOMING -->
+            <div class="card">⏳ Task sắp tới</div>
+        </div>
 
             <div class="card big">
                 <h3>🔥 Motivation of the Day</h3>
@@ -135,6 +187,10 @@ if (!isset($_SESSION['user_id'])) {
     </div>
 
 </div>
+
+            <footer class="auth-footer">
+                © 2026 LifeTrack • Track your habits • Expenses • Goals
+            </footer>
 <script>
 /* =====================
    USER PANEL TOGGLE
@@ -175,6 +231,8 @@ toggleThemeBtn.addEventListener("click", () => {
     }
 });
 </script>
+
+<script src="assets/js/dashboard.js"></script>
 
 </body>
 </html>
