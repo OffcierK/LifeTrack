@@ -1,118 +1,55 @@
 <?php
-session_start();
+require_once "auth.php";
 require_once "config/db.php";
 
-$error = "";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
-    $remember = isset($_POST['remember']); // checkbox
 
-    $sql = "SELECT * FROM users WHERE email = :email";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute(['email' => $email]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+$page = $_GET['page'] ?? 'dashboard';
 
-    if (!$user) {
-        $error = "Email chưa đăng ký";
-    } else {
-        if (password_verify($password, $user['password'])) {
+$routes = [
+  // TASKS
+  'dashboard' => 'pages/tasks/dashboard.php',
+  'upcoming'  => 'pages/tasks/upcoming.php',
+  'calendar'  => 'pages/tasks/calendar.php',
+  'sticky'    => 'pages/tasks/stickywall.php',
 
-            // ✅ SESSION LOGIN
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['user_email'] = $user['email'];
+  // LISTS
+  'personal'  => 'pages/lists/personal.php',
+  'work'      => 'pages/lists/work.php',
+  'study'     => 'pages/lists/study.php',
+];
 
-            // ✅ REMEMBER ME
-            if ($remember) {
-                $token = bin2hex(random_bytes(32));
 
-                $update = $conn->prepare(
-                    "UPDATE users SET remember_token = :token WHERE id = :id"
-                );
-                $update->execute([
-                    'token' => $token,
-                    'id' => $user['id']
-                ]);
-
-                setcookie(
-                    "remember_token",
-                    $token,
-                    time() + (86400 * 30), // 30 ngày
-                    "/",
-                    "",
-                    false,
-                    true // HttpOnly
-                );
-            }
-
-            header("Location: dashboard.php");
-            exit;
-        } else {
-            $error = "Sai mật khẩu";
-        }
-    }
+// chống truy cập file bậy
+if (!array_key_exists($page, $routes)) {
+    $page = 'dashboard';
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>LifeTrack - Login</title>
+    <title>LifeTrack</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
 <body>
-<div class="bg-brand">
-    LifeTrack
+
+<div class="app">
+    <?php include "partials/sidebar.php"; ?>
+
+    <main class="main">
+        <?php include "partials/topbar.php"; ?>
+        <?php include $routes[$page]; ?>
+    </main>
 </div>
 
-<div class="auth-container">
-    <div class="logo">📊</div>
-    <h2>LifeTrack Login</h2>
+<?php include "partials/user-panel.php"; ?>
 
-    <?php if (!empty($error)) : ?>
-        <div class="message error">
-            <?= htmlspecialchars($error) ?>
-        </div>
-    <?php endif; ?>
-
-    <form method="post">
-        <div class="form-group">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="Enter your email" required>
-        </div>
-
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" name="password" placeholder="••••••••" required>
-        </div>
-        <div class="remember">
-        <input type="checkbox" id="remember" name="remember">
-        <label for="remember">Remember me</label>
-        </div>
-
-
-
-        <button type="submit">Login</button>
-    </form>
-
-    <div class="auth-links">
-        <p>
-            Chưa có tài khoản?
-            <a href="register.php">Đăng ký</a>
-        </p>
-        <p>
-            <a href="forgetpass.php">Quên mật khẩu?</a>
-        </p>
-    </div>
-    
-</div>
-<footer class="auth-footer">
-    © 2026 LifeTrack • Track your habits • Expenses • Goals
-</footer>
-
-
+<script src="assets/js/user-panel.js"></script>
+<script src="assets/js/darkmode.js"></script>
+<script src="assets/js/dashboard.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

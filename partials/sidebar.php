@@ -26,38 +26,51 @@ function isActive($page) {
 
         <div class="sidebar-section">
     <p class="section-title">TASKS</p>
-    <a href="dashboard.php" class="menu-item <?= isActive('dashboard.php') ?>">
-    📅 <span>Today</span>
+    <a href="index.php?page=dashboard"
+    class="menu-item <?= isActive('today') ?>">
+    <img src="assets/img/today.png" class="menu-icon">
+    <span>Today</span>
     </a>
 
-    <a href="upcoming.php" class="menu-item <?= isActive('upcoming.php') ?>">
+    <a href="index.php?page=upcoming"
+    class="menu-item <?= isActive('upcoming') ?>">
     <img src="assets/img/deadline.png" class="menu-icon">
     <span>Upcoming</span>
     </a>
-    <a href="calendar.php" class="menu-item <?= isActive('calendar.php') ?>">
+
+    <a href="index.php?page=calendar"
+    class="menu-item <?= isActive('calendar') ?>">
     <img src="assets/img/cld.png" class="menu-icon">
     <span>Calendar</span>
     </a>
-    <a href="stickywall.php" class="menu-item <?= isActive('stickywall.php') ?>">
+
+    <a href="index.php?page=sticky"
+    class="menu-item <?= isActive('stickywall') ?>">
     <img src="assets/img/pin.png" class="menu-icon">
     <span>Sticky Wall</span>
     </a>
+
 
 </div>
 
 <div class="sidebar-section">
     <p class="section-title">LISTS</p>
-    <a href="lists/personal.php" class="menu-item <?= isActive('personal.php') ?>">
+    <a href="index.php?page=personal"
+    class="menu-item <?= isActive('personal') ?>">
     <img src="assets/img/man.png" class="menu-icon">
     <span>Personal</span>
     </a>
 
-    <a href="lists/work.php" class="menu-item <?= isActive('work.php') ?>">
+
+    <a href="index.php?page=work"
+    class="menu-item <?= isActive('work') ?>">
     <img src="assets/img/suitcase.png" class="menu-icon">
     <span>Work</span>
     </a>
 
-    <a href="lists/study.php" class="menu-item <?= isActive('study.php') ?>">
+
+    <a href="index.php?page=study"
+    class="menu-item <?= isActive('study') ?>">
     <img src="assets/img/mortarboard.png" class="menu-icon">
     <span>Study</span>
     </a>
