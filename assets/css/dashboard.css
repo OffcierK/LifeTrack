@@ -150,7 +150,17 @@
     color: #667eea;
     font-weight: 600;
 }
+.menu-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
 
+/* Khi collapsed, ảnh to hơn */
+.app.collapsed .menu-icon {
+    width: 24px;
+    height: 24px;
+}
 /* =====================
    TAGS
 ===================== */
@@ -260,6 +270,19 @@
 }
 
 /* USER PANEL */
+
+.user-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    object-fit: contain;
+}
+
+.user-icon:hover {
+    transform: scale(1.15);
+    filter: brightness(1.2);
+}
 .user-panel {
     position: fixed;
     top: 0;

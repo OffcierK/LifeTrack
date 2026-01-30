@@ -50,26 +50,31 @@ if (!isset($_SESSION['user_id'])) {
         📅 <span>Today</span>
     </a>
     <a class="menu-item" data-tooltip="Upcoming">
-        ⏳ <span>Upcoming</span>
-    </a>
+    <img src="assets/img/deadline.png" alt="Upcoming" class="menu-icon">
+    <span>Upcoming</span>
     <a class="menu-item" data-tooltip="Calendar">
-        🗓 <span>Calendar</span>
+    <img src="assets/img/cld.png" alt="Calendar" class="menu-icon">
+    <span>Calendar</span>
     </a>
     <a class="menu-item" data-tooltip="Sticky Wall">
-        📌 <span>Sticky Wall</span>
+    <img src="assets/img/pin.png" alt="Sticky Wall" class="menu-icon">
+    <span>Sticky Wall</span>
     </a>
 </div>
 
 <div class="sidebar-section">
     <p class="section-title">LISTS</p>
     <a class="menu-item" data-tooltip="Personal">
-        🔴 <span>Personal</span>
+    <img src="assets/img/man.png" alt="Personal" class="menu-icon">
+    <span>Personal</span>
     </a>
     <a class="menu-item" data-tooltip="Work">
-        🔵 <span>Work</span>
+    <img src="assets/img/suitcase.png" alt="Work" class="menu-icon">
+    <span>Work</span>
     </a>
     <a class="menu-item" data-tooltip="Study">
-        🟡 <span>Study</span>
+    <img src="assets/img/mortarboard.png" alt="Study" class="menu-icon">
+    <span>Study</span>
     </a>
     <a class="menu-item add" data-tooltip="Add new list">
         ＋ <span>Add new list</span>
@@ -79,10 +84,12 @@ if (!isset($_SESSION['user_id'])) {
 <!-- FOOTER -->
 <div class="sidebar-footer">
     <a class="menu-item" data-tooltip="Reports">
-        📊 <span>Reports</span>
+    <img src="assets/img/report.png" alt="Reports" class="menu-icon">
+    <span>Reports</span>
     </a>
     <a class="menu-item" data-tooltip="Settings">
-        ⚙️ <span>Settings</span>
+    <img src="assets/img/cogwheel.png" alt="Settings" class="menu-icon">
+    <span>Settings</span>
     </a>
 </div>
 
@@ -97,8 +104,8 @@ if (!isset($_SESSION['user_id'])) {
             <h2>Good morning 👋</h2>
             <div class="top-actions">
                 <span>🌙</span>
-                <span>🔔</span>
-                <span id="openUserPanel" style="cursor:pointer">👤</span>
+                <img id="openUserPanel" src="assets/img/bell.png" alt="User" style="cursor:pointer; width: 40x; height: 40px; object-fit: contain; vertical-align: middle;">
+                <img id="openUserPanel" src="assets/img/profile.png" alt="User" style="cursor:pointer; width: 45px; height: 45px; object-fit: contain; vertical-align: middle;">
             </div>
         </header>
 
