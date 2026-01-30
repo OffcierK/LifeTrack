@@ -68,10 +68,32 @@
     padding: 16px;
     border-radius: 14px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+    
+}
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 20px 40px rgba(203, 202, 202, 0.788),
+        inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+.card.big {
+    position: relative;
+    overflow: hidden;
+    grid-column: span 2;
 }
 
-.card.big {
-    grid-column: span 2;
+.card.big::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        #f97316,
+        #f59e0b
+    );
 }
 
 .content {
@@ -93,10 +115,12 @@
     height: 100vh;
     background: #ffffff;
     box-shadow: -10px 0 30px rgba(0,0,0,0.15);
-    transition: right 0.35s ease;
+    transition: right 0.35s ease; /* CHỈ RIGHT */
     z-index: 1000;
     padding: 20px;
+    will-change: right; /* tối ưu animation */
 }
+
 
 .user-panel.show {
     right: 0;
@@ -162,18 +186,6 @@
     transition: all 0.25s ease;
     margin-bottom: 10px;
 }
-
-.logout-btn {
-    display: block;
-    margin-top: 20px;
-    padding: 10px;
-    background: #ff4d4f;
-    color: white;
-    text-align: center;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-}
 .panel-btn:hover {
     background: #e5e7eb;
     transform: translateX(4px);
@@ -216,4 +228,135 @@
 #openUserPanel:hover {
     background: rgba(0,0,0,0.06);
     transform: scale(1.15);
+}
+
+/* ============ DARK MODE ============ */
+
+body.dark {
+    background: #0f1220 !important;
+    animation: none !important;
+}
+
+/* App */
+body.dark .app {
+    background: #0f1220;
+}
+
+/* Sidebar */
+body.dark .sidebar {
+    background: linear-gradient(
+        180deg,
+        #151933,
+        #0f1220
+    );
+    border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+body.dark .sidebar-menu a {
+    color: #c7c9e0;
+}
+
+body.dark .sidebar-menu a.active,
+body.dark .sidebar-menu a:hover {
+    background: rgba(99,102,241,0.15);
+    color: #e0e7ff;
+}
+
+
+/* Main */
+body.dark .main {
+    background: #0f1220;
+}
+
+/* Topbar */
+body.dark .topbar {
+    color: #e5e7eb;
+}
+
+/* Cards */
+body.dark .card {
+    background: rgba(27, 31, 58, 0.75);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.06);
+    transition: all 0.3s ease;
+    color:#e5e7eb;
+}
+
+body.dark .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.45),
+        inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+
+/* Quote */
+body.dark .quote {
+    color: #c7c9ff;
+}
+body.dark .sidebar-logo {
+    color: white;
+}
+
+
+/* User panel */
+body.dark .user-panel {
+    background: linear-gradient(
+        180deg,
+        #151933,
+        #0f1220
+    );
+    border-left: 1px solid rgba(255,255,255,0.08);
+    color:white;
+}
+
+
+/* Buttons */
+body.dark .panel-btn {
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    box-shadow: 0 8px 20px rgba(59,130,246,0.35);
+}
+
+body.dark .panel-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(59,130,246,0.45);
+}
+
+/* =====================
+   DARK MODE BODY FIX
+===================== */
+
+body.dark {
+    background: #0f1220 !important;
+    animation: none !important;
+}
+body.dark .app {
+    background: radial-gradient(
+        circle at top left,
+        #1b1f3a,
+        #0f1220 70%
+    ) !important;
+    animation: fadeDark 0.4s ease;
+}
+/* Smooth theme transition */
+.app,
+.sidebar,
+.main,
+.topbar,
+.card,
+.sidebar-menu a,
+.panel-btn {
+    transition: 
+        background-color 0.35s ease,
+        color 0.35s ease,
+        box-shadow 0.35s ease,
+        border 0.35s ease;
+}
+@keyframes fadeDark {
+    from {
+        opacity: 0.92;
+    }
+    to {
+        opacity: 1;
+    }
 }

@@ -123,7 +123,10 @@ if (!isset($_SESSION['user_id'])) {
                 <hr>
 
                 <!-- Chuẩn bị sẵn cho tương lai -->
-                <button class="panel-btn disabled">🌙 Dark mode</button>
+                <button class="panel-btn" id="toggleTheme">
+                🌙 Dark mode
+                </button>
+
                 <button class="panel-btn disabled">🔒 Change password</button>
 
                 <a href="logout.php" class="logout-btn">Logout</a>
@@ -133,6 +136,9 @@ if (!isset($_SESSION['user_id'])) {
 
 </div>
 <script>
+/* =====================
+   USER PANEL TOGGLE
+===================== */
 const userPanel = document.getElementById("userPanel");
 const openBtn = document.getElementById("openUserPanel");
 const closeBtn = document.getElementById("closeUserPanel");
@@ -143,6 +149,30 @@ openBtn.addEventListener("click", () => {
 
 closeBtn.addEventListener("click", () => {
     userPanel.classList.remove("show");
+});
+/* =====================
+   DARK MODE TOGGLE
+===================== */
+
+</script>
+<script>
+const toggleThemeBtn = document.getElementById("toggleTheme");
+
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    toggleThemeBtn.innerText = "☀️ Light mode";
+}
+
+toggleThemeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        toggleThemeBtn.innerText = "☀️ Light mode";
+    } else {
+        localStorage.setItem("theme", "light");
+        toggleThemeBtn.innerText = "🌙 Dark mode";
+    }
 });
 </script>
 
