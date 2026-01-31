@@ -12,5 +12,5 @@ if (isset($_SESSION['user_id'])) {
 setcookie("remember_token", "", time() - 3600, "/");
 session_destroy();
 
-header("Location: index.php");
+header("Location: login.php");
 exit;

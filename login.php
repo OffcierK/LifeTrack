@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 );
             }
 
-            header("Location: dashboard.php");
+            header("Location: index.php?page=dashboard");
             exit;
         } else {
             $error = "Sai mật khẩu";

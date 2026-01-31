@@ -51,5 +51,7 @@ if (!array_key_exists($page, $routes)) {
 <script src="assets/js/darkmode.js"></script>
 <script src="assets/js/dashboard.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/stickywall.js"></script>
+
 </body>
 </html>
